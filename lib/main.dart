@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_minotaur_dungeon/data/description_data.dart';
 import 'package:flutter_minotaur_dungeon/data/image_data.dart';
+import 'package:flutter_minotaur_dungeon/data/data_functions.dart';
+
 import 'package:flutter_minotaur_dungeon/ui/description.dart';
 import 'package:flutter_minotaur_dungeon/ui/image.dart';
-import 'package:flutter_minotaur_dungeon/data/data_functions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,13 +34,75 @@ class GameMainPage extends StatefulWidget {
 }
 
 class _GameMainPageState extends State<GameMainPage> {
-  void onPressed() {
+  void onPressedNorth() {
     setState(() {
       if (descriptionList.isNotEmpty) {
         textNow = getData(descriptionList);
         descriptionList.remove(textNow);
         imageUrlNow = getData(imagesUrl);
         imagesUrl.remove(imageUrlNow);
+        const snackBar = SnackBar(
+          content: Text('You opened NORTH door'),
+          duration: Duration(seconds: 1),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        textNow = winnerText;
+        imageUrlNow = winnerImage;
+      }
+    });
+  }
+
+  void onPressedWest() {
+    setState(() {
+      if (descriptionList.isNotEmpty) {
+        textNow = getData(descriptionList);
+        descriptionList.remove(textNow);
+        imageUrlNow = getData(imagesUrl);
+        imagesUrl.remove(imageUrlNow);
+        const snackBar = SnackBar(
+          content: Text('You opened WEST door'),
+          duration: Duration(seconds: 1),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        textNow = winnerText;
+        imageUrlNow = winnerImage;
+      }
+    });
+  }
+
+  void onPressedEast() {
+    setState(() {
+      if (descriptionList.isNotEmpty) {
+        textNow = getData(descriptionList);
+        descriptionList.remove(textNow);
+        imageUrlNow = getData(imagesUrl);
+        imagesUrl.remove(imageUrlNow);
+        const snackBar = SnackBar(
+          content: Text('You opened EAST door'),
+          duration: Duration(seconds: 1),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
+        textNow = winnerText;
+        imageUrlNow = winnerImage;
+      }
+    });
+  }
+
+  void onPressedSouth() {
+    setState(() {
+      if (descriptionList.isNotEmpty) {
+        textNow = getData(descriptionList);
+        descriptionList.remove(textNow);
+        imageUrlNow = getData(imagesUrl);
+        imagesUrl.remove(imageUrlNow);
+        const snackBar = SnackBar(
+          content: Text('You opened SOUTH door'),
+          duration: Duration(seconds: 1),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else {
         textNow = winnerText;
         imageUrlNow = winnerImage;
@@ -67,26 +130,26 @@ class _GameMainPageState extends State<GameMainPage> {
             child: Column(
               children: [
                 OutlinedButton(
-                  onPressed: onPressed,
+                  onPressed: onPressedNorth,
                   child: const Text('N'),
                 ),
                 Row(
                   children: [
                     const Spacer(),
                     OutlinedButton(
-                      onPressed: onPressed,
+                      onPressed: onPressedWest,
                       child: const Text('W'),
                     ),
                     const Spacer(),
                     OutlinedButton(
-                      onPressed: onPressed,
+                      onPressed: onPressedEast,
                       child: const Text('E'),
                     ),
                     const Spacer(),
                   ],
                 ),
                 OutlinedButton(
-                  onPressed: onPressed,
+                  onPressed: onPressedSouth,
                   child: const Text('S'),
                 ),
               ],

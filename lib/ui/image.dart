@@ -15,7 +15,7 @@ class _GameImageState extends State<GameImage> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 6,
+      flex: 5,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Image.network(
